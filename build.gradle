@@ -1,17 +1,60 @@
 apply plugin: 'java'
+apply plugin: 'fatjar'
+apply plugin: 'application'
+
+// Use Java 7 by default
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
+// UTF-8 should be standard by now. So use it!
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+// The main class of the application
+mainClassName = 'com.example.helloworld.HelloWorldService'
+
+// Add Gradle FatJar Plugin, see https://github.com/musketyr/gradle-fatjar-plugin
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath group: 'eu.appsatori', name: 'gradle-fatjar-plugin', version: '0.1.2'
+    }
+}
+
+// Set our project variables
+project.ext {
+    dropwizardVersion = '0.5.1'
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile group: 'com.yammer.dropwizard', name: 'dropwizard-core', version: '0.5.1'
+    compile group: 'com.yammer.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
 }
 
-apply plugin: 'application'
+// Configure the fatJar task
+fatJar {
+    classifier 'fat'
 
-mainClassName = 'com.example.helloworld.HelloWorldService'
+    // We need to add the main class to the manifest, otherwise the JAR won't start.
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
 
+    // We have to exclude signature files from the fat JAR, otherwise we'll get invalid signature file digest errors.
+    exclude 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.SF'
+}
+
+// Configure the run task to start the Dropwizard service
 run {
-    args 'server', 'hello-world.yml'
+    args 'server', './src/dist/config/helloworld_service.yml'
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.2'
 }
