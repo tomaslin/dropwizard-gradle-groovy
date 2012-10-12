@@ -1,0 +1,14 @@
+language: java
+jdk:
+  - openjdk7
+  - oraclejdk7
+script: ./gradlew jar fatJar distZip
+after_script:
+  - 'test -f ./build/libs/dropwizard-gradle.jar'
+  - 'test -f ./build/libs/dropwizard-gradle-fat.jar'
+  - 'test -f ./build/distributions/dropwizard-gradle.zip'
+notifications:
+  # Email notifications are disabled to not annoy anybody.
+  # See http://about.travis-ci.org/docs/user/build-configuration/ to learn more
+  # about configuring notification recipients and more.
+  email: false
