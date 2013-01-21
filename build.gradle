@@ -10,11 +10,6 @@ targetCompatibility = '1.7'
 // UTF-8 should be standard by now. So use it!
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-compileGroovy{
-    sourceCompatibility = '1.7'
-    targetCompatibility = '1.7'
-}
-
 // The main class of the application
 mainClassName = 'com.example.helloworld.HelloWorldService'
 
