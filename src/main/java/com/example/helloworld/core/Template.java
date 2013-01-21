@@ -12,7 +12,7 @@ public class Template {
         this.content = content;
         this.defaultName = defaultName;
     }
-    
+
     public String render(Optional<String> name) {
         return format(content, name.or(defaultName));
     }

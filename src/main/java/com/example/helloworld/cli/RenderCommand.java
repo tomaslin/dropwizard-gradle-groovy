@@ -22,9 +22,9 @@ public class RenderCommand extends ConfiguredCommand<HelloWorldConfiguration> {
     public void configure(Subparser subparser) {
         super.configure(subparser);
         subparser.addArgument("-i", "--include-default")
-                 .action(Arguments.storeTrue())
-                 .dest("include-default")
-                 .help("Also render the template with the default name");
+                .action(Arguments.storeTrue())
+                .dest("include-default")
+                .help("Also render the template with the default name");
         subparser.addArgument("names").nargs("*");
     }
 

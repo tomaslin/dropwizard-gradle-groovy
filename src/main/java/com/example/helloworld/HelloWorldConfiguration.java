@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 public class HelloWorldConfiguration extends Configuration {
     @NotEmpty
     private String template;
-    
+
     @NotEmpty
     private String defaultName = "Stranger";
 
