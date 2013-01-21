@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'fatjar'
 apply plugin: 'application'
+apply plugin: 'project-report'
 
 // Use Java 7 by default
 sourceCompatibility = '1.7'
