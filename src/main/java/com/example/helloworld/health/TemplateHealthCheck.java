@@ -1,21 +1,21 @@
 package com.example.helloworld.health;
 
+import com.example.helloworld.core.Template;
+import com.google.common.base.Optional;
 import com.yammer.metrics.core.HealthCheck;
 
 public class TemplateHealthCheck extends HealthCheck {
-    private final String template;
+    private final Template template;
 
-    public TemplateHealthCheck(String template) {
+    public TemplateHealthCheck(Template template) {
         super("template");
         this.template = template;
     }
 
     @Override
     protected Result check() throws Exception {
-        final String saying = String.format(template, "TEST");
-        if (!saying.contains("TEST")) {
-            return Result.unhealthy("template doesn't include a name");
-        }
+        template.render(Optional.of("woo"));
+        template.render(Optional.<String>absent());
         return Result.healthy();
     }
 }
