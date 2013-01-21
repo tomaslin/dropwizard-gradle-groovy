@@ -17,13 +17,13 @@ import javax.persistence.*;
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    long id;
 
     @Column(name = "fullName", nullable = false)
-    private String fullName;
+    String fullName;
 
     @Column(name = "jobTitle", nullable = false)
-    private String jobTitle;
+    String jobTitle;
 
     public long getId() {
         return id;

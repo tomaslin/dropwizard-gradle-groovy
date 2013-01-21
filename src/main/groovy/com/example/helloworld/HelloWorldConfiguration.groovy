@@ -11,31 +11,15 @@ import javax.validation.constraints.NotNull;
 
 public class HelloWorldConfiguration extends Configuration {
     @NotEmpty
-    private String template;
+    String template;
 
     @NotEmpty
-    private String defaultName = "Stranger";
+    String defaultName = "Stranger";
 
     @Valid
     @NotNull
     @JsonProperty("database")
-    private DatabaseConfiguration databaseConfiguration = new DatabaseConfiguration();
-
-    public String getTemplate() {
-        return template;
-    }
-
-    public void setTemplate(String template) {
-        this.template = template;
-    }
-
-    public String getDefaultName() {
-        return defaultName;
-    }
-
-    public void setDefaultName(String defaultName) {
-        this.defaultName = defaultName;
-    }
+    DatabaseConfiguration databaseConfiguration = new DatabaseConfiguration();
 
     public Template buildTemplate() {
         return new Template(template, defaultName);
@@ -45,7 +29,4 @@ public class HelloWorldConfiguration extends Configuration {
         return databaseConfiguration;
     }
 
-    public void setDatabaseConfiguration(DatabaseConfiguration databaseConfiguration) {
-        this.databaseConfiguration = databaseConfiguration;
-    }
 }

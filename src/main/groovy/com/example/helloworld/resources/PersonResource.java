@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class PersonResource {
 
-    private final PersonDAO peopleDAO;
+    final PersonDAO peopleDAO;
 
     public PersonResource(PersonDAO peopleDAO) {
         this.peopleDAO = peopleDAO;

@@ -17,10 +17,10 @@ import java.util.concurrent.atomic.AtomicLong;
 @Path("/hello-world")
 @Produces(MediaType.APPLICATION_JSON)
 public class HelloWorldResource {
-    private static final Logger LOGGER = LoggerFactory.getLogger(HelloWorldResource.class);
+    static final Logger LOGGER = LoggerFactory.getLogger(HelloWorldResource.class);
 
-    private final Template template;
-    private final AtomicLong counter;
+    final Template template;
+    final AtomicLong counter;
 
     public HelloWorldResource(Template template) {
         this.template = template;

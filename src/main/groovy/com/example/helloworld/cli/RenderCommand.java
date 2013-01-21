@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class RenderCommand extends ConfiguredCommand<HelloWorldConfiguration> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(RenderCommand.class);
+    static final Logger LOGGER = LoggerFactory.getLogger(RenderCommand.class);
 
     public RenderCommand() {
         super("render", "Render the template data to console");

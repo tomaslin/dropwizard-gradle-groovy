@@ -15,7 +15,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class PeopleResource {
 
-    private final PersonDAO peopleDAO;
+    final PersonDAO peopleDAO;
 
     public PeopleResource(PersonDAO peopleDAO) {
         this.peopleDAO = peopleDAO;
