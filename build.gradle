@@ -41,7 +41,7 @@ dependencies {
     compile group: 'com.h2database', name: 'h2', version: '1.3.170'
     // this dependency is needed due to http://issues.gradle.org/browse/GRADLE-2647
     compile "com.sun.jersey:jersey-client:1.15" 
-    groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.8.7'
+    groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.1.0'
     testCompile group: 'junit', name: 'junit', version: '4.11'
     testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
     testCompile group: 'org.easytesting', name: 'fest-assert-core', version: '2.0M8'
