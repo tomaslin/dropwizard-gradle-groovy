@@ -3,15 +3,13 @@ apply plugin: 'fatjar'
 apply plugin: 'application'
 apply plugin: 'project-report'
 
+// The main class of the application
+mainClassName = 'com.example.helloworld.HelloWorldService'
+configFile = './src/dist/config/example.yml'
+
 // Use Java 7 by default
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
-
-// UTF-8 should be standard by now. So use it!
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-
-// The main class of the application
-mainClassName = 'com.example.helloworld.HelloWorldService'
 
 // Add Gradle FatJar Plugin, see https://github.com/musketyr/gradle-fatjar-plugin
 buildscript {
@@ -63,7 +61,7 @@ fatJar {
 // Configure the run task to start the Dropwizard service
 
 run {
-    args 'server', './src/dist/config/example.yml'
+    args 'server', configFile
 }
 
 task wrapper(type: Wrapper) {
