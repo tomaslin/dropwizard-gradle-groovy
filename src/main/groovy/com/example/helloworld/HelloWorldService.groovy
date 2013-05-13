@@ -11,6 +11,7 @@ import com.example.helloworld.resources.HelloWorldResource
 import com.example.helloworld.resources.PeopleResource
 import com.example.helloworld.resources.PersonResource
 import com.example.helloworld.resources.ProtectedResource
+import com.google.common.collect.ImmutableList
 import com.yammer.dropwizard.Service
 import com.yammer.dropwizard.assets.AssetsBundle
 import com.yammer.dropwizard.auth.basic.BasicAuthProvider
@@ -18,6 +19,7 @@ import com.yammer.dropwizard.config.Bootstrap
 import com.yammer.dropwizard.config.Environment
 import com.yammer.dropwizard.db.DatabaseConfiguration
 import com.yammer.dropwizard.hibernate.HibernateBundle
+import com.yammer.dropwizard.hibernate.SessionFactoryFactory
 import com.yammer.dropwizard.migrations.MigrationsBundle
 
 public class HelloWorldService extends Service<HelloWorldConfiguration> {
@@ -26,7 +28,8 @@ public class HelloWorldService extends Service<HelloWorldConfiguration> {
     }
 
     final HibernateBundle<HelloWorldConfiguration> hibernateBundle =
-            new HibernateBundle<HelloWorldConfiguration>(Person.class) {
+            new HibernateBundle<HelloWorldConfiguration>(ImmutableList.copyOf([Person]), new SessionFactoryFactory()) {
+            //new HibernateBundle<HelloWorldConfiguration>(Person.class) {
                 @Override
                 public DatabaseConfiguration getDatabaseConfiguration(HelloWorldConfiguration configuration) {
                     return configuration.getDatabaseConfiguration()
