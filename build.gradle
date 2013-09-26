@@ -64,3 +64,6 @@ fatJar {
 run {
     args 'server', dropWizardConfig
 }
+
+
+task stage(dependsOn: ['clean', 'fatJar'])
