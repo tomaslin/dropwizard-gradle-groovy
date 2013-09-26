@@ -64,7 +64,3 @@ fatJar {
 run {
     args 'server', dropWizardConfig
 }
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.8'
-}
