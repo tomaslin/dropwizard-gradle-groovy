@@ -1,0 +1,1 @@
+web: java -Ddw.http.port=$PORT -Ddw.http.adminPort=$PORT -jar dropwizard-gradle-groovy/build/libs/dropwizard-gradle-groovy-fat.jar server dropwizard-gradle-groovy/src/dist/config/example.yml

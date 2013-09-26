@@ -2,6 +2,7 @@ apply plugin: 'groovy'
 apply plugin: 'fatjar'
 apply plugin: 'application'
 apply plugin: 'project-report'
+apply plugin: 'idea'
 
 // The main class of the application
 mainClassName = 'com.example.helloworld.HelloWorldService'
@@ -65,5 +66,5 @@ run {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.4'
+    gradleVersion = '1.8'
 }
