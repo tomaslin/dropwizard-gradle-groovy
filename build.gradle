@@ -24,7 +24,7 @@ buildscript {
 
 // Set our project variables
 project.ext {
-    dropwizardVersion = '0.6.1'
+    dropwizardVersion = '0.6.2'
     dropWizardConfig = './src/dist/config/example.yml'
 }
 
